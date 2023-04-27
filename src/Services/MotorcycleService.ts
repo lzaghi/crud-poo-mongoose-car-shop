@@ -3,9 +3,8 @@ import IMotorcycle from '../Interfaces/IMotorcycle';
 import MotorcycleODM from '../Models/MotorcycleODM';
 
 class MotorcycleService {
-  private createMotorcycleDomain(motorcycle: IMotorcycle | null): Motorcycle | null {
-    if (motorcycle) return new Motorcycle(motorcycle);
-    return null;
+  private createMotorcycleDomain(motorcycle: IMotorcycle): Motorcycle {
+    return new Motorcycle(motorcycle);
   }
 
   public async create(motorcycle: IMotorcycle) {
