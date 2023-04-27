@@ -9,11 +9,24 @@ class CarService {
   }
 
   public async create(car: ICar) {
-    console.log('service', car);
-    
     const carODM = new CarODM();
     const newCar = await carODM.create(car);
     return this.createCarDomain(newCar);
+  }
+
+  public async getAll() {
+    const carODM = new CarODM();
+    const cars = await carODM.getAll();
+    const carArray = cars.map((car) => this.createCarDomain(car));
+    return carArray;
+  }
+
+  public async getById(id: string) {
+    const carODM = new CarODM();
+    const car = await carODM.getById(id);
+    console.log('service', car);
+
+    return this.createCarDomain(car[0]);
   }
 }
 

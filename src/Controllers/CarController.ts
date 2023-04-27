@@ -16,11 +16,25 @@ class CarController {
 
   public async create() {
     const { body } = this._req;
-    console.log('contoller', body);
-
     try {
       const newCar = await this._service.create(body);
       return this._res.status(201).json(newCar);
+    } catch (error) {
+      this._next(error);
+    }
+  }
+
+  public async getAll() {
+    const cars = await this._service.getAll();
+    return this._res.status(200).json(cars);
+  }
+
+  public async getById() {
+    const { id } = this._req.params;
+    console.log('controller', id);
+    try {
+      const car = await this._service.getById(id);
+      return this._res.status(200).json(car);
     } catch (error) {
       this._next(error);
     }
