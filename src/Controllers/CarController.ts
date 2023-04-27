@@ -31,9 +31,19 @@ class CarController {
 
   public async getById() {
     const { id } = this._req.params;
-    console.log('controller', id);
     try {
       const car = await this._service.getById(id);
+      return this._res.status(200).json(car);
+    } catch (error) {
+      this._next(error);
+    }
+  }
+
+  public async update() {
+    const { id } = this._req.params;
+    const { body } = this._req; 
+    try {
+      const car = await this._service.update(id, body);
       return this._res.status(200).json(car);
     } catch (error) {
       this._next(error);
