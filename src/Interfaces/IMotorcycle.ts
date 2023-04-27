@@ -1,8 +1,7 @@
-import MotorcycleTypes from '../utils/motorcycleTypes';
 import IVehicle from './IVehicle';
 
 interface IMotorcycle extends IVehicle{
-  category: MotorcycleTypes,
+  category: string,
   engineCapacity: number,
 }
 

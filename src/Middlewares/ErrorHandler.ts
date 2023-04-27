@@ -10,6 +10,7 @@ class ErrorHandler {
     let status = 500;
     if (error.message === 'Invalid mongo id') status = 422;
     if (error.message === 'Car not found') status = 404;
+    if (error.message === 'Motorcycle not found') status = 404;
     res.status(status).json({ message: error.message });
     next();
   }
