@@ -32,6 +32,11 @@ class CarService {
     const car = await carODM.update(id, newCar);
     return this.createCarDomain(car);
   }
+
+  public async delete(id: string) {
+    const carODM = new CarODM();
+    await carODM.delete(id);
+  }
 }
 
 export default CarService;

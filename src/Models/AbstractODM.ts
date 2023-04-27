@@ -39,6 +39,13 @@ abstract class AbstractODM<T> {
     if (!vehicle) throw Error(`${this.modelName} not found`);
     return vehicle;
   }
+
+  public async delete(id: string) {
+    await this.getById(id);
+    await this.model.findByIdAndDelete(
+      { _id: id },
+    );
+  }
 }
 
 export default AbstractODM;
